@@ -18,49 +18,78 @@ import NewspaperIcon from '@mui/icons-material/Newspaper';
 import Person3Icon from '@mui/icons-material/Person3';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { NavLink, useMatch, useParams } from 'react-router-dom';
+import LoginIcon from '@mui/icons-material/Login';
 
 const iconarr = [
   <DashboardIcon sx={{ mr: 1 }} />,
   <BookmarkAddIcon sx={{ mr: 1 }} />,
   <NewspaperIcon sx={{ mr: 1 }} />,
   <Person3Icon sx={{ mr: 1 }} />,
-  <ExitToAppIcon sx={{ mr: 1 }} />
+  <ExitToAppIcon sx={{ mr: 1 }} />,
+  <LoginIcon sx={{mr: 1}} />
 ]
 
-const menuitems = [
-  {
-    id: 1,
-    name: "Dashboard"
-  },
-  {
-    id: 2,
-    name: "Add Shares"
-  },
-  {
-    id: 3,
-    name: "Read News"
-  },
-  {
-    id: 4,
-    name: "Profile"
-  },
-  {
-    id: 5,
-    name: "Logout"
-  }
-]
+let menuitems = [
 
-const routes = [
-  "/dashboard",
-  "/addShares",
-  "/news",
-  "/user/portfolio",
-  "/login"
 ]
 
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
+
+  const curruser = JSON.parse(localStorage.getItem('user')); 
+  if (curruser) {
+    menuitems = [
+      {
+        id: 1,
+        name: "Dashboard", 
+        route: "/dashboard"
+      },
+      {
+        id: 2,
+        name: "Add Shares",
+        route: "/addShares"
+      },
+      {
+        id: 3,
+        name: "Read News",
+        route: "/news"
+      },
+      {
+        id: 4,
+        name: "Profile",
+        route: "/user/portfolio"
+      },
+      {
+        id: 5,
+        name: "Logout",
+        route: "/logout"
+      }
+    ]
+  }else{
+    menuitems = [
+      {
+        id: 1,
+        name: "Dashboard", 
+        route: "/dashboard"
+      },
+      {
+        id: 2,
+        name: "Add Shares",
+        route: "/addShares"
+      },
+      {
+        id: 3,
+        name: "Read News",
+        route: "/news"
+      },
+      {
+        id: 4,
+        name: "Login",
+        route: "/login"
+      }
+    ]
+  }
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -86,7 +115,7 @@ function ResponsiveDrawer(props) {
       <List sx={{ textAlign: "center" }}>
         {(menuitems).map((item) => {
           return (
-            <NavLink to={`${routes[(item.id) - 1]}`} style={{ textDecoration: 'none', color: "black" }}>
+            <NavLink to={`${item.route}`} style={{ textDecoration: 'none', color: "black" }}>
               <ListItem>
                 <Button key={item.id} sx={{
                   height: 50, width: "100%",

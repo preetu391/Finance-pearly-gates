@@ -15,6 +15,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import data from '../Components/data.json'
+import Chart from '../Components/Chart/Chart';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -162,6 +163,18 @@ const CompanyPage = () => {
                             </Grid>
                         </Grid>
                     </Grid>
+                </Box>
+                <Box p={2} sx={{ margin: "auto" }}>
+                    <Box display="flex" flexDirection="column">
+                        <Box>
+                            <Typography sx={{ mr: { xs: 1, sm: 8 }, mt: { xs: 1, sm: 5 }, fontWeight: "500", fontSize: "25px" }} variant="h6" color="black">
+                                <strong>Price history graph</strong>
+                            </Typography>
+                        </Box>
+                        <Box  sx={{ pt: 3 }}>
+                            <Chart />
+                        </Box>
+                    </Box>
                 </Box>
                 <Box p={1} pl={2} sx={{ ml: { xs: 0, sm: 8 } }}>
                     <Typography sx={{ mr: { xs: 1, sm: 8 }, mt: { xs: 1, sm: 5 }, fontWeight: "500", fontSize: "15px" }} variant="subtitle1" color="black">

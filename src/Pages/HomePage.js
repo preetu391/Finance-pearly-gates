@@ -3,6 +3,7 @@ import ResponsiveDrawer from '../Components/sidebar/SideBarResponsive'
 import { Box } from "@mui/system";
 import data from '../Components/data.json'
 import { Outlet } from 'react-router-dom';
+import Footer from '../Components/Footer/Footer';
 
 const HomePage = () => {
 
@@ -45,6 +46,9 @@ const HomePage = () => {
                 }}
             >
                 <Outlet context={[filteredData]}/>
+                <Box sx={{mt: 5, mb:0, pb:0}}>
+                    <Footer/>
+                </Box>
             </Box>
         </>
     )
