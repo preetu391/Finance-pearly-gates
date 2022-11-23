@@ -10,8 +10,6 @@ const HomePage = () => {
     const [searchField, setSearchField] = useState('')
     const [filteredData, setFilteredData] = useState(data)
 
-    console.log(data)
-
     useEffect(() => {
         const newFilteredData = data.filter((ele) => {
             return ele.ShortName.toLocaleLowerCase().includes(searchField);

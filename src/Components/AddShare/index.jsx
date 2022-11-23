@@ -26,11 +26,13 @@ const AddShare = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:8080//api/addshare";
+      const url = "https://finance-apppp-backend.herokuapp.com/api/addshare";
       const { data: res } = await axios.post(url, data);
       // localStorage.setItem("token", res.token);
       // localStorage.setItem("user", JSON.stringify(res.data));
       // window.location = "/";
+      console.log(data)
+      navigate("/dashboard");
     } catch (error) {
       if (
         error.response &&
