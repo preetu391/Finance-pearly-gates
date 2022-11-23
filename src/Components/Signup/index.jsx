@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import pic from "../photos/Rectangle 38.svg";
+import { Box } from "@mui/system";
 
 const Signup = () => {
   const [data, setData] = useState({
@@ -22,7 +23,7 @@ const Signup = () => {
     try {
       const url = "https://finance-apppp-backend.herokuapp.com/api/signup";
       const { data: res } = await axios.post(url, data);
-      navigate("/");
+      navigate("/login");
       console.log(res.message);
     } catch (error) {
       if (
@@ -36,61 +37,65 @@ const Signup = () => {
   };
 
   return (
-    <div className={styles.signup_container}>
-      <div className={styles.signup_form_container}>
-        <div className={styles.left}>
-          <img src={pic} alt="mypic" />
+    <>
+      <Box mt={10}>
+        <div className={styles.signup_container}>
+          <div className={styles.signup_form_container}>
+            <div className={styles.left}>
+              <img src={pic} alt="mypic" />
+            </div>
+            <div className={styles.right}>
+              <form className={styles.form_container} onSubmit={handleSubmit}>
+                <h1>Create&nbsp;Account</h1>
+                <div className={styles.input_box}>
+                  <input
+                    type="text"
+                    placeholder="User Name"
+                    name="userName"
+                    onChange={handleChange}
+                    value={data.userName}
+                    required
+                    className={styles.input}
+                  />
+                </div>
+                <div className={styles.input_box}>
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    name="email"
+                    onChange={handleChange}
+                    value={data.email}
+                    required
+                    className={styles.input}
+                  />
+                </div>
+                <div className={styles.input_box}>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={handleChange}
+                    value={data.password}
+                    required
+                    className={styles.input}
+                  />
+                </div>
+                {error && <div className={styles.error_msg}>{error}</div>}
+                <button type="submit" className={styles.green_btn}>
+                  Create Account
+                </button>
+                <h5>
+                  Already have an account?{" "}
+                  <Link className={styles.linkStyle} to="/login">
+                    Login
+                  </Link>
+                </h5>
+              </form>
+            </div>
+          </div>
         </div>
-        <div className={styles.right}>
-          <form className={styles.form_container} onSubmit={handleSubmit}>
-            <h1>Create &nbsp; Account</h1>
-            <div className={styles.input_box}>
-              <input
-                type="text"
-                placeholder="User Name"
-                name="userName"
-                onChange={handleChange}
-                value={data.userName}
-                required
-                className={styles.input}
-              />
-            </div>
-            <div className={styles.input_box}>
-              <input
-                type="email"
-                placeholder="Email Address"
-                name="email"
-                onChange={handleChange}
-                value={data.email}
-                required
-                className={styles.input}
-              />
-            </div>
-            <div className={styles.input_box}>
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={handleChange}
-                value={data.password}
-                required
-                className={styles.input}
-              />
-            </div>
-            {error && <div className={styles.error_msg}>{error}</div>}
-            <button type="submit" className={styles.green_btn}>
-              Create Account
-            </button>
-            <h5>
-              Already have an account?{" "}
-              <Link className={styles.linkStyle} to="/login">
-                Login
-              </Link>
-            </h5>
-          </form>
-        </div>
-      </div>
-    </div>
+      </Box>
+    </>
   );
 };
 

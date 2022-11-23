@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 // import pic from "../assets/Financial-Services-Under-GST.jpg";
 import pic from "../photos/fimage.webp";
+import { Box } from "@mui/system";
 
 const AddShare = () => {
 
@@ -11,8 +12,8 @@ const AddShare = () => {
 
   const navigate = useNavigate()
 
-  if(!curruser){
-      navigate("/login")
+  if (!curruser) {
+    navigate("/login")
   }
 
   const [data, setData] = useState({ companyName: "", noOfShare: "" });
@@ -42,94 +43,50 @@ const AddShare = () => {
   };
 
   return (
-    <div className={styles.signup_container}>
-      <div className={styles.signup_form_container}>
-        <div className={styles.left}>
-          <img src={pic} alt="mypic" />
-        </div>
-        <div className={styles.right}>
-          <form className={styles.form_container} onSubmit={handleSubmit}>
-            <h1>Add Share</h1>
+    <>
+      <Box mt={5}>
+        <div className={styles.signup_container}>
+          <div className={styles.signup_form_container}>
+            <div className={styles.left}>
+              <img src={pic} alt="mypic" />
+            </div>
+            <div className={styles.right}>
+              <form className={styles.form_container} onSubmit={handleSubmit}>
+                <h1>Add Share</h1>
 
-            <div className={styles.input_box}>
-              <input
-                type="text"
-                placeholder="Company Name"
-                name="companyName"
-                onChange={handleChange}
-                value={data.companyName}
-                required
-                className={styles.input}
-              />
+                <div className={styles.input_box}>
+                  <input
+                    type="text"
+                    placeholder="Company Name"
+                    name="companyName"
+                    onChange={handleChange}
+                    value={data.companyName}
+                    required
+                    className={styles.input}
+                  />
+                </div>
+                <div className={styles.input_box}>
+                  <input
+                    type="text"
+                    placeholder="No of Share"
+                    name="noOfShare"
+                    onChange={handleChange}
+                    value={data.noOfShare}
+                    required
+                    className={styles.input}
+                  />
+                </div>
+                {error && <div className={styles.error_msg}>{error}</div>}
+                <button type="submit" className={styles.green_btn}>
+                  Submit
+                </button>
+              </form>
             </div>
-            <div className={styles.input_box}>
-              <input
-                type="text"
-                placeholder="No of Share"
-                name="noOfShare"
-                onChange={handleChange}
-                value={data.noOfShare}
-                required
-                className={styles.input}
-              />
-            </div>
-            {error && <div className={styles.error_msg}>{error}</div>}
-            <button type="submit" className={styles.green_btn}>
-              Submit
-            </button>
-            {/* <h5>
-              Don't have an account?{" "}
-              <Link className={styles.linkStyle} to="/signup">
-                SignUp
-              </Link>
-            </h5> */}
-          </form>
+          </div>
         </div>
-      </div>
-    </div>
+      </Box>
+    </>
   );
-
-  // return (
-  // 	<div className={styles.login_container}>
-  // 		<div className={styles.login_form_container}>
-  // 			<div className={styles.left}>
-  // 				<form className={styles.form_container} onSubmit={handleSubmit}>
-  // 					<h1>Login to Your Account</h1>
-  // 					<input
-  // 						type="email"
-  // 						placeholder="Email"
-  // 						name="email"
-  // 						onChange={handleChange}
-  // 						value={data.email}
-  // 						required
-  // 						className={styles.input}
-  // 					/>
-  // 					<input
-  // 						type="password"
-  // 						placeholder="Password"
-  // 						name="password"
-  // 						onChange={handleChange}
-  // 						value={data.password}
-  // 						required
-  // 						className={styles.input}
-  // 					/>
-  // 					{error && <div className={styles.error_msg}>{error}</div>}
-  // 					<button type="submit" className={styles.green_btn}>
-  // 						Sing In
-  // 					</button>
-  // 				</form>
-  // 			</div>
-  // 			<div className={styles.right}>
-  // 				<h1>New Here ?</h1>
-  // 				<Link to="/signup">
-  // 					<button type="button" className={styles.white_btn}>
-  // 						Sing Up
-  // 					</button>
-  // 				</Link>
-  // 			</div>
-  // 		</div>
-  // 	</div>
-  // );
 };
 
 export default AddShare;
