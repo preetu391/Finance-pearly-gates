@@ -1,12 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import pic from "../photos/Rectangle 38.svg";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+
+  const navigate = useNavigate()
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
@@ -15,11 +17,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:8080/api/auth";
+      const url = "https://finance-apppp-backend.herokuapp.com/api/login";
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("token", res.token);
       localStorage.setItem("user", JSON.stringify(res.data));
-      window.location = "/";
+      navigate("/")
     } catch (error) {
       if (
         error.response &&
@@ -38,7 +40,7 @@ const Login = () => {
           <img src={pic} alt="mypic" />
         </div>
         <div className={styles.right}>
-          <form className={styles.form_container} onSubmit={handleSubmit}>
+          <form className={styles.form_container} onSubmit={{handleSubmit}}>
             <h1>Login</h1>
 
             <div className={styles.input_box}>

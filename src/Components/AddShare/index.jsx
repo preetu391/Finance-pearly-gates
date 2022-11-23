@@ -1,11 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 // import pic from "../assets/Financial-Services-Under-GST.jpg";
 import pic from "../photos/fimage.webp";
 
-const Login = () => {
+const AddShare = () => {
+
+  const curruser = JSON.parse(localStorage.getItem('user'));
+
+  const navigate = useNavigate()
+
+  if(!curruser){
+      navigate("/login")
+  }
+
   const [data, setData] = useState({ companyName: "", noOfShare: "" });
   const [error, setError] = useState("");
 
@@ -123,4 +132,4 @@ const Login = () => {
   // );
 };
 
-export default Login;
+export default AddShare;

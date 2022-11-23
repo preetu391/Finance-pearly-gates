@@ -9,6 +9,8 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import News from './Components/News/News';
 import Logout from './Components/Logout/Logout';
+import AddShare from './Components/AddShare';
+import ResetPassword from './Components/ResetPassword/ResetPassword';
 
 function App() {
   return (
@@ -16,18 +18,19 @@ function App() {
       <CssBaseline />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} >
+          <Route exact path="/" element={<HomePage />} >
             <Route path="/" element={<DashBoard />} />
             <Route path="/dashboard" element={<DashBoard />} />
             <Route path="/company/:symbol" element={<CompanyPage />} />
             <Route path="/portfolio" element={<HomePage />} />
             <Route path="/user/portfolio" element={<HomePage />} />
+            <Route path="/addShares" element={<AddShare />} />
             <Route path="/news" element={<News />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/addShares" element={<CompanyPage />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>

@@ -20,7 +20,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:8080/api/users";
+      const url = "https://finance-apppp-backend.herokuapp.com/api/signup";
       const { data: res } = await axios.post(url, data);
       navigate("/");
       console.log(res.message);
