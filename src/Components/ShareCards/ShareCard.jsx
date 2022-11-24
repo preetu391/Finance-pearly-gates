@@ -21,8 +21,8 @@ export default function ImgMediaCard({ share }) {
     axios.delete(`https://finance-apppp-backend.herokuapp.com/api/addshare/${id}`)
       .then((res) => {
         console.log("Deleted!!", res);
-        const data = data.filter(item => item.id !== id);
-        setData(data)
+        const del = data.filter(item => item._id !== id);
+        setData(del)
         navigate("/user/portfolio");
       })
       .catch((err) => console.log(err));

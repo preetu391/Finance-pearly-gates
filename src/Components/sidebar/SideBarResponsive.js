@@ -192,12 +192,18 @@ function ResponsiveDrawer(props) {
             {ok3 ? params.id : ''}
             {/* <SearchBox onChangeHandler={props.onChangeHandler} /> */}
           </Typography>
-          <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{mr: 5}}>
+          {user? <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{mr: 5}}>
             <Box><Person3Icon sx={{ fontSize: "20px", height: 35, width: 35 }} /></Box>
             <Box>
               {user?.userName}
             </Box>
-          </Box>
+          </Box> : ''}
+          {/* <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{mr: 5}}>
+            <Box><Person3Icon sx={{ fontSize: "20px", height: 35, width: 35 }} /></Box>
+            <Box>
+              {user?.userName}
+            </Box>
+          </Box> */}
         </Toolbar>
       </AppBar>
       <Box
