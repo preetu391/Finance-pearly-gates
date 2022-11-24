@@ -1,16 +1,12 @@
 import React from 'react';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
 import Card from './Card';
 
 const CardContainer = ({array}) => {
     return (
         <>
             <Grid item xs={12} mt={3} justifyContent="center" >
-                <Box>
-                    {/* <SearchBox onChangeHandler={onSearchChange} /> */}
-                </Box>
                 <Grid container justifyContent="center" spacing={3}>
                     {array.map((company,index) => (
                         <Grid key={index} item>

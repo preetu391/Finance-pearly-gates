@@ -46,6 +46,14 @@ const theme = createTheme({
     },
 });
 
+const defs = [
+    `It is the total amount of money brought in by a company's operations, measured over a set amount of time.`,
+    `Total revenue earned per share over an year`,
+    `Earnings before interest, taxes, depreciation, and amortization (EBITDA) is a widely used measure of core corporate profitability. EBITDA is calculated by adding interest, tax, depreciation, and amortization expenses to net income.`,
+    `Gross profit is the profit a business makes after subtracting all the costs that are related to manufacturing and selling its products or services.`,
+    `Return on equity (ROE) is a measure of financial performance calculated by dividing net income by shareholders' equity.`
+]
+
 const CompanyPage = () => {
 
     const params = useParams();
@@ -176,7 +184,7 @@ const CompanyPage = () => {
                         </Grid>
                     </Grid>
                 </Box>
-                <Box m={2} sx={{ pr:5 , pl: 5}}>
+                <Box m={2} sx={{ pr: 5, pl: 5 }}>
                     <Typography sx={{ fontWeight: "500", fontSize: "15px" }} variant="body2" >
                         {des.Description}
                     </Typography>
@@ -234,11 +242,34 @@ const CompanyPage = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {rows.map((row) => (
+                                {rows.map((row, index) => (
                                     <StyledTableRow key={row.Factor}>
-                                        <StyledTableCell component="th" scope="row">
-                                            {row.Factor}
-                                        </StyledTableCell>
+                                        <Tooltip arrow title={
+                                            <Box display="flex" flexDirection="column">
+                                                <Box>
+                                                    <Typography sx={{ fontWeight: "500", fontSize: "13px" }} variant="body2" >
+                                                        {defs[index]}
+                                                    </Typography>
+                                                </Box>
+                                            </Box>
+                                        }
+                                            position="left"
+                                            componentsProps={{
+                                                tooltip: {
+                                                    sx: {
+                                                        bgcolor: '#4d5d53',
+                                                        margin: "auto",
+                                                        p: 2,
+                                                        '& .MuiTooltip-arrow': {
+                                                            color: '#4d5d53',
+                                                        },
+                                                    },
+                                                },
+                                            }}>
+                                            <StyledTableCell component="th" scope="row">
+                                                {row.Factor}
+                                            </StyledTableCell>
+                                        </Tooltip>
                                         <StyledTableCell>{row.FY22}</StyledTableCell>
                                     </StyledTableRow>
                                 ))}

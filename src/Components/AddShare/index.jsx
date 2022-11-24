@@ -32,7 +32,7 @@ const AddShare = () => {
       // localStorage.setItem("user", JSON.stringify(res.data));
       // window.location = "/";
       console.log(data)
-      navigate("/dashboard");
+      navigate("/user/portfolio");
     } catch (error) {
       if (
         error.response &&
