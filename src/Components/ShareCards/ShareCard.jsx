@@ -27,7 +27,7 @@ export default function ImgMediaCard({ share }) {
       })
       .catch((err) => console.log(err));
   };
-
+ 
   return (
     <>
       <Box mt={10}>

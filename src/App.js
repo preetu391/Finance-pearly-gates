@@ -29,6 +29,7 @@ function App() {
             <Route path="/portfolio" element={<HomePage />} />
             <Route path="/user/portfolio" element={<ShareCards />} />
             <Route path="/addShares" element={<AddShare />} />
+            <Route path="/addsharest" element={<AddShare />} />
             <Route path="/news" element={<News />} />
           </Route>
           <Route path="/login" element={<Login />} />

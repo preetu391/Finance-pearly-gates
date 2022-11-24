@@ -17,7 +17,7 @@ import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import Person3Icon from '@mui/icons-material/Person3';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import { NavLink, useMatch, useParams } from 'react-router-dom';
+import { NavLink, useMatch, useParams, useNavigate } from 'react-router-dom';
 import LoginIcon from '@mui/icons-material/Login';
 
 const iconarr = [
@@ -38,6 +38,14 @@ const drawerWidth = 240;
 function ResponsiveDrawer(props) {
 
   const curruser = JSON.parse(localStorage.getItem('user'));
+
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
+
   if (curruser) {
     menuitems = [
       {
@@ -57,7 +65,7 @@ function ResponsiveDrawer(props) {
       },
       {
         id: 4,
-        name: "Shares you own",
+        name: "Portfolio",
         route: "/user/portfolio"
       },
       {
@@ -90,6 +98,8 @@ function ResponsiveDrawer(props) {
       }
     ]
   }
+
+   
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
