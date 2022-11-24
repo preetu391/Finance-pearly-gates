@@ -58,6 +58,7 @@ const CompanyPage = () => {
     }
 
     const [comp, setComp] = useState([])
+    const [des, setDes] = useState([])
 
     const getComp = async () => {
         try {
@@ -69,8 +70,19 @@ const CompanyPage = () => {
         }
     }
 
+    const getDes = async () => {
+        try {
+            const res = await axios.get(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${params.symbol}&apikey=8TRCETRAA6QT8B7T`)
+            setDes(res.data)
+            console.log(res);
+        } catch (err) {
+            alert(err.message);
+        }
+    }
+
     useEffect(() => {
         getComp();
+        getDes();
     }, []);
 
     function createData(Factor, FY22) {
@@ -164,6 +176,12 @@ const CompanyPage = () => {
                         </Grid>
                     </Grid>
                 </Box>
+                <Box m={2} sx={{ pr:5 , pl: 5}}>
+                    <Typography sx={{ fontWeight: "500", fontSize: "15px" }} variant="body2" >
+                        {des.Description}
+                    </Typography>
+
+                </Box>
                 <Box p={2} sx={{ margin: "auto" }}>
                     <Box display="flex" flexDirection="column">
                         <Box>
@@ -171,14 +189,39 @@ const CompanyPage = () => {
                                 <strong>Price history graph</strong>
                             </Typography>
                         </Box>
-                        <Box  sx={{ pt: 3 }}>
-                            <Chart />
-                        </Box>
+                        <Tooltip arrow title={
+                            <Box display="flex" flexDirection="column">
+                                <Box>
+                                    <Typography sx={{ fontWeight: "500", fontSize: "13px" }} variant="body2" >
+                                        This graph represents monthly high and low of different years. You can map how the company has grown and fallen using this graph.
+                                    </Typography>
+                                </Box>
+                            </Box>
+                        }
+                            position="right"
+                            componentsProps={{
+                                tooltip: {
+                                    sx: {
+                                        bgcolor: '#4d5d53',
+                                        margin: "auto",
+                                        p: 2,
+                                        margin: "auto",
+                                        '& .MuiTooltip-arrow': {
+                                            color: '#4d5d53',
+                                        },
+                                    },
+                                },
+                            }}>
+                            <Box sx={{ pt: 3 }}>
+                                <Chart />
+
+                            </Box>
+                        </Tooltip>
                     </Box>
                 </Box>
                 <Box p={1} pl={2} sx={{ ml: { xs: 0, sm: 8 } }}>
-                    <Typography sx={{ mr: { xs: 1, sm: 8 }, mt: { xs: 1, sm: 5 }, fontWeight: "500", fontSize: "15px" }} variant="subtitle1" color="black">
-                        <strong><u>Financial factors of the company for the current year</u></strong>
+                    <Typography sx={{ mr: { xs: 1, sm: 8 }, mt: { xs: 1, sm: 5 }, fontWeight: "500", fontSize: "25px" }} variant="h6" color="black">
+                        <strong>Financial factors of the company for the current year</strong>
                     </Typography>
                 </Box>
                 <Box sx={{ padding: 2, ml: { xs: 0, sm: 8 } }}>
@@ -204,18 +247,124 @@ const CompanyPage = () => {
                     </TableContainer>
                 </Box>
                 <Box p={1} pl={2} sx={{ ml: { xs: 0, sm: 8 } }}>
-                    <Typography sx={{ mr: { xs: 1, sm: 8 }, mt: { xs: 1 }, fontWeight: "500", fontSize: "15px" }} variant="subtitle1" color="black">
-                        <strong><u>Bid / Ask Spread</u></strong>
-                    </Typography>
+                    <Tooltip arrow title={
+                        <Box display="flex" flexDirection="column">
+                            <Box>
+                                <Typography sx={{ fontWeight: "500", fontSize: "13px" }} variant="body2" >
+                                    Bid and ask price are market terms representing supply and demand for a stock.The difference between bid and ask is called the spread.
+                                </Typography>
+                            </Box>
+                            <Box>
+                                <Typography sx={{ fontWeight: "500", fontSize: "13px" }} variant="body2" >
+                                    Generally speaking, the larger the spread, the less liquid the stock is. If the stock is especially illiquid (not easily convertable to cash), there is a danger that a large order could cause the price to fall due to slippage (Slippage refers to the difference between the expected price of a trade and the price at which the trade is executed.).
+                                </Typography>
+                            </Box>
+                        </Box>
+                    }
+                        placement="right"
+                        componentsProps={{
+                            tooltip: {
+                                sx: {
+                                    bgcolor: '#4d5d53',
+                                    margin: "auto",
+                                    p: 2,
+                                    margin: "auto",
+                                    '& .MuiTooltip-arrow': {
+                                        color: '#4d5d53',
+                                    },
+                                },
+                            },
+                        }}>
+                        <Typography sx={{ mr: { xs: 1, sm: 8 }, mt: { xs: 1 }, fontWeight: "500", fontSize: "25px" }} variant="h6" color="black">
+                            <strong><u>Bid / Ask Spread</u></strong>
+                        </Typography>
+                    </Tooltip>
                 </Box>
                 <Box sx={{ padding: 2, ml: { xs: 0, sm: 8 } }}>
                     <TableContainer component={Paper} sx={{ maxWidth: 650 }}>
                         <Table sx={{ maxWidth: 650 }} aria-label="customized table">
                             <TableHead>
                                 <TableRow>
-                                    <StyledTableCell>Bid Price</StyledTableCell>
-                                    <StyledTableCell>Ask Price</StyledTableCell>
-                                    <StyledTableCell>Beta</StyledTableCell>
+                                    <Tooltip arrow title={
+                                        <Box display="flex" flexDirection="column">
+                                            <Box>
+                                                <Typography sx={{ fontWeight: "500", fontSize: "13px" }} variant="body2" >
+                                                    In the context of stock trading, the bid price refers to the highest amount of money a prospective buyer is willing to spend for it.
+                                                </Typography>
+                                            </Box>
+                                        </Box>
+                                    }
+                                        placement="bottom"
+                                        componentsProps={{
+                                            tooltip: {
+                                                sx: {
+                                                    bgcolor: '#4d5d53',
+                                                    margin: "auto",
+                                                    p: 2,
+                                                    margin: "auto",
+                                                    '& .MuiTooltip-arrow': {
+                                                        color: '#4d5d53',
+                                                    },
+                                                },
+                                            },
+                                        }}>
+                                        <StyledTableCell>Bid Price</StyledTableCell>
+                                    </Tooltip>
+                                    <Tooltip arrow title={
+                                        <Box display="flex" flexDirection="column">
+                                            <Box>
+                                                <Typography sx={{ fontWeight: "500", fontSize: "13px" }} variant="body2" >
+                                                    The ask is the lowest price where someone is willing to sell a share.
+                                                </Typography>
+                                            </Box>
+                                        </Box>
+                                    }
+                                        placement="bottom"
+                                        componentsProps={{
+                                            tooltip: {
+                                                sx: {
+                                                    bgcolor: '#4d5d53',
+                                                    margin: "auto",
+                                                    p: 2,
+                                                    margin: "auto",
+                                                    '& .MuiTooltip-arrow': {
+                                                        color: '#4d5d53',
+                                                    },
+                                                },
+                                            },
+                                        }}>
+                                        <StyledTableCell>Ask Price</StyledTableCell>
+                                    </Tooltip>
+                                    <Tooltip arrow title={
+                                        <Box display="flex" flexDirection="column">
+                                            <Box>
+                                                <Typography sx={{ fontWeight: "500", fontSize: "13px" }} variant="body2" >
+                                                    Beta is a concept that measures the expected move in a stock relative to movements in the overall market. A beta greater than 1.0 suggests that the stock is more volatile than the broader market, and a beta less than 1.0 indicates a stock with lower volatility.
+                                                </Typography>
+                                            </Box>
+                                            <Box>
+                                                <Typography sx={{ fontWeight: "500", fontSize: "13px" }} variant="body2" >
+                                                    A volatile stock is the one whose price fluctuates wildly i.e. hits new highs and lows or moves erratically.
+                                                </Typography>
+                                            </Box>
+                                        </Box>
+                                    }
+                                        placement="right"
+                                        componentsProps={{
+                                            tooltip: {
+                                                sx: {
+                                                    bgcolor: '#4d5d53',
+                                                    margin: "auto",
+                                                    p: 2,
+                                                    margin: "auto",
+                                                    '& .MuiTooltip-arrow': {
+                                                        color: '#4d5d53',
+                                                    },
+                                                },
+                                            },
+                                        }}>
+                                        <StyledTableCell>Beta</StyledTableCell>
+                                    </Tooltip>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -232,9 +381,6 @@ const CompanyPage = () => {
                         </Table>
                     </TableContainer>
                 </Box>
-            </Box>
-            <Box>
-                company {params.symbol}
             </Box>
         </>
     )

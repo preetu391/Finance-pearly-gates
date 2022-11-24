@@ -1,0 +1,33 @@
+[
+    {
+        "_id": 1,
+        "companyName": "Microsoft",
+        "noOfShare": "100" 
+    },
+
+    {
+        "_id": 2,
+        "companyName": "Amazon",
+        "noOfShare": "66" 
+    },
+    {
+        "_id": 3,
+        "companyName": "Google",
+        "noOfShare": "78" 
+    },
+    {
+        "_id": 4,
+        "companyName": "Cisco",
+        "noOfShare": "89" 
+    },
+    {
+        "_id": 5,
+        "companyName": "Uber",
+        "noOfShare": "240" 
+    },
+    {
+        "_id": 6,
+        "companyName": "Zomato",
+        "noOfShare": "444" 
+    }
+]

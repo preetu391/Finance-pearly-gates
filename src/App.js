@@ -10,7 +10,10 @@ import Signup from './Components/Signup';
 import News from './Components/News/News';
 import Logout from './Components/Logout/Logout';
 import AddShare from './Components/AddShare';
-import ResetPassword from './Components/ResetPassword/ResetPassword';
+import ResetPassword from './Components/ResetPassword';
+import ForgetPassword from './Components/ForgetPassword';
+import SendLink from './Components/Sendlink'
+import ShareCards from './Components/ShareCards'
 
 function App() {
   return (
@@ -23,14 +26,17 @@ function App() {
             <Route path="/dashboard" element={<DashBoard />} />
             <Route path="/company/:symbol" element={<CompanyPage />} />
             <Route path="/portfolio" element={<HomePage />} />
-            <Route path="/user/portfolio" element={<HomePage />} />
+            <Route path="/user/portfolio" element={<ShareCards />} />
             <Route path="/addShares" element={<AddShare />} />
             <Route path="/news" element={<News />} />
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/forgetpassword" element={<ForgetPassword/>} />
+          <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
+          <Route path="/sendlink" element={<SendLink />} />
+          <Route path="/sharecards" element={<ShareCards />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>

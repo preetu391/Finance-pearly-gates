@@ -1,28 +1,28 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import pic from "../photos/Rectangle 38.svg";
-import { Box } from "@mui/material";
+import { Box } from "@mui/system";
+import { useParams,useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const [data, setData] = useState({ email: "", password: "" });
+const ResetPassword = () => {
+  const params = useParams();
+  const [data, setData] = useState({ password: "", password2: "" });
   const [error, setError] = useState("");
-
-  const navigate = useNavigate()
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
 
+  const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "https://finance-apppp-backend.herokuapp.com/api/login";
+      const url = `https://finance-apppp-backend.herokuapp.com/api/resetpassword/${params.id}/${params.token}`;
       const { data: res } = await axios.post(url, data);
-      localStorage.setItem("token", res.token);
-      localStorage.setItem("user", JSON.stringify(res.data));
-      navigate("/dashboard")
+      navigate("/login");
     } catch (error) {
       if (
         error.response &&
@@ -36,31 +36,20 @@ const Login = () => {
 
   return (
     <>
-      <Box mt={10}>
+      <Box mt={13}>
         <div className={styles.signup_container}>
           <div className={styles.signup_form_container}>
-            <div className={styles.left}>
-              <img src={pic} alt="mypic" />
-            </div>
             <div className={styles.right}>
               <form className={styles.form_container} onSubmit={handleSubmit}>
-                <h1>Login</h1>
-
-                <div className={styles.input_box}>
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    name="email"
-                    onChange={handleChange}
-                    value={data.email}
-                    required
-                    className={styles.input}
-                  />
-                </div>
+                <h1>Reset Password</h1>
+                <h5>
+                  We received a request to reset the password for your account.
+                  Please enter it below.
+                </h5>
                 <div className={styles.input_box}>
                   <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="password"
                     name="password"
                     onChange={handleChange}
                     value={data.password}
@@ -68,22 +57,21 @@ const Login = () => {
                     className={styles.input}
                   />
                 </div>
-                <Box mt={3}>
-                <h5><Link className={styles.linkStyle} to="/forgetpassword">
-                  Forget Password
-                </Link>
-                </h5>
-                </Box>
+                <div className={styles.input_box}>
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    name="password2"
+                    onChange={handleChange}
+                    value={data.password2}
+                    required
+                    className={styles.input}
+                  />
+                </div>
                 {error && <div className={styles.error_msg}>{error}</div>}
                 <button type="submit" className={styles.green_btn}>
-                  Login
+                  Reset Password
                 </button>
-                <h5>
-                  Don't have an account?{" "}
-                  <Link className={styles.linkStyle} to="/signup">
-                    SignUp
-                  </Link>
-                </h5>
               </form>
             </div>
           </div>
@@ -93,4 +81,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ResetPassword;

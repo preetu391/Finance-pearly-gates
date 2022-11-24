@@ -1,28 +1,26 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import pic from "../photos/Rectangle 38.svg";
-import { Box } from "@mui/material";
+import { Box } from "@mui/system";
 
-const Login = () => {
-  const [data, setData] = useState({ email: "", password: "" });
+const ForgetPassword = () => {
+  const [data, setData] = useState({ email: "" });
   const [error, setError] = useState("");
-
-  const navigate = useNavigate()
 
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
 
+  const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "https://finance-apppp-backend.herokuapp.com/api/login";
+      const url = "https://finance-apppp-backend.herokuapp.com/api/forgetpassword";
       const { data: res } = await axios.post(url, data);
-      localStorage.setItem("token", res.token);
-      localStorage.setItem("user", JSON.stringify(res.data));
-      navigate("/dashboard")
+      navigate("/sendlink");
     } catch (error) {
       if (
         error.response &&
@@ -36,20 +34,20 @@ const Login = () => {
 
   return (
     <>
-      <Box mt={10}>
+      <Box mt={13}>
         <div className={styles.signup_container}>
           <div className={styles.signup_form_container}>
-            <div className={styles.left}>
-              <img src={pic} alt="mypic" />
-            </div>
             <div className={styles.right}>
               <form className={styles.form_container} onSubmit={handleSubmit}>
-                <h1>Login</h1>
-
+                <h1>Forget Password</h1>
+                <h5>
+                  Enter the Email Address associated with your
+                  Finance-Pearly-Gate account.
+                </h5>
                 <div className={styles.input_box}>
                   <input
                     type="email"
-                    placeholder="Email Address"
+                    placeholder="Email"
                     name="email"
                     onChange={handleChange}
                     value={data.email}
@@ -57,33 +55,10 @@ const Login = () => {
                     className={styles.input}
                   />
                 </div>
-                <div className={styles.input_box}>
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    onChange={handleChange}
-                    value={data.password}
-                    required
-                    className={styles.input}
-                  />
-                </div>
-                <Box mt={3}>
-                <h5><Link className={styles.linkStyle} to="/forgetpassword">
-                  Forget Password
-                </Link>
-                </h5>
-                </Box>
                 {error && <div className={styles.error_msg}>{error}</div>}
                 <button type="submit" className={styles.green_btn}>
-                  Login
+                  Submit
                 </button>
-                <h5>
-                  Don't have an account?{" "}
-                  <Link className={styles.linkStyle} to="/signup">
-                    SignUp
-                  </Link>
-                </h5>
               </form>
             </div>
           </div>
@@ -93,4 +68,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgetPassword;
