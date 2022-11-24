@@ -217,7 +217,6 @@ const CompanyPage = () => {
                             }}>
                             <Box sx={{ pt: 3 }}>
                                 <Chart />
-
                             </Box>
                         </Tooltip>
                     </Box>

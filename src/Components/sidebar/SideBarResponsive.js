@@ -26,7 +26,7 @@ const iconarr = [
   <NewspaperIcon sx={{ mr: 1 }} />,
   <Person3Icon sx={{ mr: 1 }} />,
   <ExitToAppIcon sx={{ mr: 1 }} />,
-  <LoginIcon sx={{mr: 1}} />
+  <LoginIcon sx={{ mr: 1 }} />
 ]
 
 let menuitems = [
@@ -37,12 +37,12 @@ const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
 
-  const curruser = JSON.parse(localStorage.getItem('user')); 
+  const curruser = JSON.parse(localStorage.getItem('user'));
   if (curruser) {
     menuitems = [
       {
         id: 1,
-        name: "Dashboard", 
+        name: "Dashboard",
         route: "/dashboard"
       },
       {
@@ -57,7 +57,7 @@ function ResponsiveDrawer(props) {
       },
       {
         id: 4,
-        name: "Profile",
+        name: "Shares you own",
         route: "/user/portfolio"
       },
       {
@@ -66,11 +66,11 @@ function ResponsiveDrawer(props) {
         route: "/logout"
       }
     ]
-  }else{
+  } else {
     menuitems = [
       {
         id: 1,
-        name: "Dashboard", 
+        name: "Dashboard",
         route: "/dashboard"
       },
       {
@@ -101,7 +101,7 @@ function ResponsiveDrawer(props) {
 
   const active = "contained"
 
-  const params= useParams();
+  const params = useParams();
 
   const ok1 = useMatch({ path: "/dashboard", end: true })
   const ok2 = useMatch({ path: "/", end: true })
@@ -136,6 +136,8 @@ function ResponsiveDrawer(props) {
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
+
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <Box sx={{ display: 'flex', backgroundColor: "#B9FFF8" }}>
@@ -186,10 +188,16 @@ function ResponsiveDrawer(props) {
             FINANCE PEARLY GATES
           </Typography> */}
           <Typography variant="h6" noWrap component="div" width="70%">
-            {ok1 || ok2 ? <SearchBox onChangeHandler={props.onChangeHandler} />: ''}
+            {ok1 || ok2 ? <SearchBox onChangeHandler={props.onChangeHandler} /> : ''}
             {ok3 ? params.id : ''}
             {/* <SearchBox onChangeHandler={props.onChangeHandler} /> */}
           </Typography>
+          <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{mr: 5}}>
+            <Box><Person3Icon sx={{ fontSize: "20px", height: 35, width: 35 }} /></Box>
+            <Box>
+              {user?.userName}
+            </Box>
+          </Box>
         </Toolbar>
       </AppBar>
       <Box

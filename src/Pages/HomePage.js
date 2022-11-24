@@ -31,7 +31,7 @@ const HomePage = () => {
 
     return (
         <>
-            <Box sx={{backgroundColor: "#42C2FF"}}><ResponsiveDrawer onChangeHandler={onSearchChange} /></Box>
+            <Box sx={{ backgroundColor: "#42C2FF" }}><ResponsiveDrawer onChangeHandler={onSearchChange} /></Box>
             <Box
                 component="main"
                 sx={{
@@ -40,12 +40,12 @@ const HomePage = () => {
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     height: { sm: `calc(100% - ${topHeight}px)` },
                     ml: { sm: `${drawerWidth}px` },
-                    mt: { xs: `${topHeight + 50}px`, sm: `${topHeight+50}px` },
+                    mt: { xs: `${topHeight + 50}px`, sm: `${topHeight + 50}px` },
                 }}
             >
-                <Outlet context={[filteredData]}/>
-                <Box sx={{mt: 5, mb:0, pb:0}}>
-                    <Footer/>
+                <Outlet context={[filteredData]} />
+                <Box sx={{ mt: 5, mb: 0, pb: 0 }}>
+                    <Footer />
                 </Box>
             </Box>
         </>

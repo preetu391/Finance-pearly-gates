@@ -14,6 +14,7 @@ import ResetPassword from './Components/ResetPassword';
 import ForgetPassword from './Components/ForgetPassword';
 import SendLink from './Components/Sendlink'
 import ShareCards from './Components/ShareCards'
+import EditShare from './Components/EditShare';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
           <Route path="/sendlink" element={<SendLink />} />
           <Route path="/sharecards" element={<ShareCards />} />
+          <Route path="/editshare/:id" element={<EditShare />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
       </BrowserRouter>

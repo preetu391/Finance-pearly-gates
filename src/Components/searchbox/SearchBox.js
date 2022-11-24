@@ -9,7 +9,7 @@ const SearchBox = ({ onChangeHandler }) => {
             <Box
                 component="form"
                 sx={{
-                    '& > :not(style)': { m: 1, width: '80%' },
+                    '& > :not(style)': { m: 1, width: '90%' },
                     alignItems: "center",
                     justifyContent: "center",
                     color: "white",
@@ -20,7 +20,9 @@ const SearchBox = ({ onChangeHandler }) => {
                 autoComplete="off"
                 margin="auto"
             >
-                <TextField sx={{borderRadius: 1, borderColor: "white", textDecorationColor: "white", backgroundColor: "white", border: 0}} label="Search any company..." variant="outlined" onChange={onChangeHandler}/>
+                <TextField sx={{
+                    borderRadius: 1, borderColor: "white", textDecorationColor: "white", backgroundColor: "white", border: 0,
+                }} label="Search any company..." variant="outlined" onChange={onChangeHandler} />
             </Box>
         </div>
     )
