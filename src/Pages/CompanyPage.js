@@ -141,8 +141,6 @@ const CompanyPage = () => {
                                             bgcolor: '#4d5d53',
                                             margin: "auto",
                                             p: 2,
-                                            height: 56,
-                                            margin: "auto",
                                             '& .MuiTooltip-arrow': {
                                                 color: '#4d5d53',
                                             },
@@ -176,9 +174,6 @@ const CompanyPage = () => {
                         <Grid item xs>
                             <Grid container direction="row-reverse">
                                 <Grid item>
-                                    <Typography sx={{ mr: { xs: 1, sm: 5 }, fontWeight: "500" }} variant="body1" color="black">
-                                        Number of shares you own: <strong>5</strong>
-                                    </Typography>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -307,7 +302,7 @@ const CompanyPage = () => {
                             },
                         }}>
                         <Typography sx={{ mr: { xs: 1, sm: 8 }, mt: { xs: 1 }, fontWeight: "500", fontSize: "25px" }} variant="h6" color="black">
-                            <strong><u>Bid / Ask Spread</u></strong>
+                            <strong>Bid / Ask Spread</strong>
                         </Typography>
                     </Tooltip>
                 </Box>
