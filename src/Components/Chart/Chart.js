@@ -65,7 +65,7 @@ export default function Chart() {
             let searchurl = `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${cname}&apikey=8TRCETRAA6QT8B7T`
             fetch(searchurl).then(response => response.json()).then(result => {
                 setCData(result?.["Monthly Time Series"])
-                // console.log(result?.["Monthly Time Series"]);
+                console.log(result?.["Monthly Time Series"]);
             })
         }
         getNewsData()

@@ -9,7 +9,9 @@ export const ShareCards = () => {
 
   const getShares = async () => {
     try {
-      const res = await axios.get(`https://finance-apppp-backend.herokuapp.com/api/addshare`)
+      const res = await axios.get(`https://finance-apppp-backend.herokuapp.com/api/addshare?id=${
+        JSON.parse(localStorage.getItem("user"))._id
+      }`)
       setShares(res.data)
       console.log(res);
     } catch (err) {

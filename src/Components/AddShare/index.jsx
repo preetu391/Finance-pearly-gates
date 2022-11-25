@@ -10,6 +10,8 @@ const AddShare = () => {
 
   const curruser = JSON.parse(localStorage.getItem('user'));
 
+  const id= curruser._id
+
   const navigate = useNavigate()
 
   if (!curruser) {
@@ -27,11 +29,11 @@ const AddShare = () => {
     e.preventDefault();
     try {
       const url = "https://finance-apppp-backend.herokuapp.com/api/addshare";
-      const { data: res } = await axios.post(url, data);
-      // localStorage.setItem("token", res.token);
-      // localStorage.setItem("user", JSON.stringify(res.data));
-      // window.location = "/";
-      console.log(data)
+      const val = {...data, id};
+      await axios.post(url, val)
+      .then((response) => {
+            console.log(response);
+         });
       navigate("/user/portfolio");
     } catch (error) {
       if (
