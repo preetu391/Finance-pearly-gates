@@ -20,7 +20,7 @@ const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = `https://finance-apppp-backend.herokuapp.com/api/resetpassword/${params.id}/${params.token}`;
+      const url = `https://finance-backend-lqvn.onrender.com/api/resetpassword/${params.id}/${params.token}`;
       const { data: res } = await axios.post(url, data);
       navigate("/login");
     } catch (error) {
