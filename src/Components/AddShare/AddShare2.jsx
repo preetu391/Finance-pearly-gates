@@ -26,7 +26,7 @@ const AddShare2 = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "https://finance-apppp-backend.herokuapp.com/api/addshare";
+      const url = "https://finance-backend-lqvn.onrender.com/api/addshare";
       const { data: res } = await axios.post(url, data);
       // localStorage.setItem("token", res.token);
       // localStorage.setItem("user", JSON.stringify(res.data));
