@@ -28,7 +28,7 @@ const AddShare = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "https://finance-apppp-backend.herokuapp.com/api/addshare";
+      const url = "https://finance-backend-lqvn.onrender.com/api/addshare";
       const val = {...data, id};
       await axios.post(url, val)
       .then((response) => {
