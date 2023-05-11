@@ -18,7 +18,7 @@ export default function ImgMediaCard({ share }) {
 
   const postDelete = (id, e) => {
     e.preventDefault();
-    axios.delete(`https://finance-apppp-backend.herokuapp.com/api/addshare/${id}`)
+    axios.delete(`https://finance-backend-lqvn.onrender.com/api/addshare/${id}`)
       .then((res) => {
         console.log("Deleted!!", res);
         const del = data.filter(item => item._id !== res.data._id);
