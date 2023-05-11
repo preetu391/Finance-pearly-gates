@@ -2,7 +2,7 @@
   "name": "finance-pearly-gates",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://finance-apppp-backend.herokuapp.com/",
+  "proxy": "https://finance-backend-lqvn.onrender.com/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

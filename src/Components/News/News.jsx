@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./news.css"
 import NewsCard from './NewsCard.jsx'
+import axios from 'axios'
 
 const News = () => {
     const [newsData, setNewsData] = useState([])
@@ -8,10 +9,10 @@ const News = () => {
     useEffect(() => {
 
         async function getNewsData() {
-            let searchurl = `https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=8cf3185411c241818bf837eec011f6a5`
+            let searchurl = `https://finance-backend-lqvn.onrender.com/news`
             fetch(searchurl).then(response => response.json()).then(result => {
-                setNewsData(result?.articles)
-                // console.log(result?.articles);
+                setNewsData(result)
+                console.log(result);
             })
         }
         getNewsData()

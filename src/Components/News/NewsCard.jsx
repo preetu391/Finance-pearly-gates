@@ -14,7 +14,7 @@ const NewsCard = (props) => {
                         <ul class="ul-list-css d-md-flex flex-wrap text-capitalize ff-open-sans">
                             <li>
                                 <a href={data?.url} target="_blank" style={{ textDecoration: "none", color: "black" }} ><h5 class="problem-list-hover-css">
-                                    <img width="100px" src={data?.urlToImage}/>
+                                    <img width="100px" src={data?.imageUrl}/>
 
                                     &nbsp;&nbsp;&nbsp;{data?.title}</h5></a>
                             </li>
@@ -22,7 +22,7 @@ const NewsCard = (props) => {
                     </div>
                 </div>
                 <div class="job-right my-4 flex-shrink-0">
-                    <a href={data?.url}  target="_blank" style={{ textDecoration: "none" }} ><button style={{ textDecoration: "none" }} class="button">Visit</button></a>
+                    <a href={data?.titleUrl}  target="_blank" style={{ textDecoration: "none" }} ><button style={{ textDecoration: "none" }} class="button">Visit</button></a>
                 </div>
             </div></div>
         </div>
