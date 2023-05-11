@@ -21,7 +21,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "https://finance-apppp-backend.herokuapp.com/api/signup";
+      const url = "https://finance-backend-lqvn.onrender.com/api/signup";
       const { data: res } = await axios.post(url, data);
       navigate("/login");
       console.log(res.message);
