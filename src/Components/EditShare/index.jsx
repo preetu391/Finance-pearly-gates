@@ -27,7 +27,7 @@ const EditShare = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = `https://finance-apppp-backend.herokuapp.com/api/addshare/${id}`;
+      const url = `https://finance-backend-lqvn.onrender.com/api/addshare/${id}`;
       const { data: res } = await axios.put(url, data);
       console.log(data)
       navigate("/user/portfolio");
