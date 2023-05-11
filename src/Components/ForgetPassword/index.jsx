@@ -18,7 +18,7 @@ const ForgetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "https://finance-apppp-backend.herokuapp.com/api/forgetpassword";
+      const url = "https://finance-backend-lqvn.onrender.com/api/forgetpassword";
       const { data: res } = await axios.post(url, data);
       navigate("/sendlink");
     } catch (error) {
